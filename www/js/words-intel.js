@@ -116,10 +116,7 @@ WordsIntel.prototype.init = function() {
 	// Case insensitive
 	var content = this._text.toLowerCase();
 
-	console.log('Initial length: ' + content.length);
-	
 	this._applyFilters();
-	console.log('Size after filtering: ' + content.length);
 	
 	// Split by words
 	var words = content.split(/\s+/);
@@ -127,8 +124,7 @@ WordsIntel.prototype.init = function() {
 	// Gather information
 	this.stats = {};
 
-	console.log('Processing ' + words.length + ' words...');
-	
+
 	for (var i = 0; i < words.length; i++) {
 		var currentWord = words[i];
 		
@@ -143,9 +139,4 @@ WordsIntel.prototype.init = function() {
 	
 	this.sortedWords = this._getSortedKeys(this.stats);
 	
-	for (var i = (this.sortedWords.length - 1); i >= 0; i--) {
-		console.log((this.sortedWords.length - i) + "th '" + this.sortedWords[i] + "', " + this.stats[this.sortedWords[i]]);
-	}
-	
-
 };

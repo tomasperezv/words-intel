@@ -26,6 +26,10 @@
     var wordsIntel = new WordsIntel(document.getElementById('text').value);
     wordsIntel.init();
 
+  	for (var i = (wordsIntel.sortedWords.length - 1); i >= 0; i--) {
+  		console.log((wordsIntel.sortedWords.length - i) + "th '" + wordsIntel.sortedWords[i] + "', " + wordsIntel.stats[wordsIntel.sortedWords[i]]);
+  	}
+
     var tags = document.getElementsByTagName('svg');
     for (var i = 0; i < tags.length; i++) {
       tags[i].parentNode.removeChild(tags[i]);
