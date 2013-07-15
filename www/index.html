@@ -36,9 +36,23 @@
     }
 
     var fill = d3.scale.category20();
-  
+    
+    // Custom modifier function
+    var onValue = function(value) {
+      	
+        if (value > 200) {
+			    value = 150;
+		    }
+
+		    if (value < 10) {
+			    value = value * 10;
+		    }
+        
+        return value;
+    };
+
     d3.layout.cloud().size([800, 600])
-        .words(wordsIntel.getCloudsMapData())
+        .words(wordsIntel.getCloudsMapData(onValue))
         .padding(2)
         .font("Impact")
         .fontSize(function(d) { return d.size; })
