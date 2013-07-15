@@ -73,10 +73,11 @@ WordsIntel.prototype._getSortedKeys = function(obj) {
 
 /**
  * @return {Array}
+ * @param {Function} onValue
  * @method getCloudsMapData
  * @public
  */
-WordsIntel.prototype.getCloudsMapData = function() {
+WordsIntel.prototype.getCloudsMapData = function(onValue) {
 
 	// Generating data for the cloud map
 	var limit = 75,
@@ -86,14 +87,10 @@ WordsIntel.prototype.getCloudsMapData = function() {
 	for (var i = (this.sortedWords.length - 1); i >= 0; i--) {
 
 		var value = (parseInt(this.stats[this.sortedWords[i]], 10)*2);
-		if (value > 200) {
-			value = 150;
+		if (typeof onValue === "function") {
+			value = onValue(value);	
 		}
-
-		if (value < 10) {
-			value = value * 10;
-		}
-
+		
 		data.push({text: this.sortedWords[i], size: value});
 
 		current++;
